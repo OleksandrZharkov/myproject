@@ -7,8 +7,6 @@ resource "aws_instance" "ubuntu-server" {
   
   vpc_security_group_ids = [aws_security_group.x3iibits-all.id]
  
-  key_name: = "iac"
-
   tags = {
     "Name" = "ubuntu-server"
   }
