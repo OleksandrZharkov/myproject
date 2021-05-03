@@ -1,4 +1,4 @@
-- name: Lesson12
+- name: EC2 deploy
   gather_facts: false
   hosts: [all]
   become: yes
