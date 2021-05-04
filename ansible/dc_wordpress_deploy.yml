@@ -31,14 +31,3 @@
 
     - name: Update apt and install docker-ce
       apt: update_cache=yes name=docker-ce state=latest
-    
-    - name: Copy docker-compose.yml
-      ansible.builtin.copy:
-        src: dc_wordpress.yml
-        dest: /ansible/
-        owner: ubuntu
-        group: root
-        mode: u=rw,g=r,o=r
-
-    - name: Start Docker-compose
-      command: 'docker-compose up -d' 
