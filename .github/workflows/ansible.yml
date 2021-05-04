@@ -40,6 +40,6 @@ jobs:
       - name: Ansible
         uses: saubermacherag/ansible-playbook-docker-action@v1.3
         with:
-          playbookName: 'ansible/dc_wordpress_deploy'
+          playbookName: 'ansible/dc_wordpress_deploy.yml'
           inventoryFile: 'ansible/hosts'
           keyFile: 'ansible/key.pem'
