@@ -4,7 +4,7 @@
   become: yes
 
   tasks:
-    - name: Update apt and
+    - name: Update apt
       apt: update_cache=yes 
     #- name: Update OS Ubuntu Server 20.04
     #  command: apt -y update    
