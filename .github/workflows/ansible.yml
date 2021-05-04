@@ -37,9 +37,9 @@ jobs:
             echo "$SSH" > ansible/key.pem
             chmod 400 ansible/key.pem
             cat ansible/key.pem
-      - name: Ansible
+      - name: Ansible 
         uses: saubermacherag/ansible-playbook-docker-action@v1.3
         with:
-          playbookName: 'ansible/dc_wordpress_deploy.yml'
+          playbookName: 'ansible/dc_wordpress_deploy.yml'  #choose your ansible playbook for iac
           inventoryFile: 'ansible/hosts'
           keyFile: 'ansible/key.pem'
