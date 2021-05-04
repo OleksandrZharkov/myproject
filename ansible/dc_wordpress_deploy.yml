@@ -27,15 +27,6 @@
     - name: Update apt and install docker-ce
       apt: update_cache=yes name=docker-ce state=latest
     
-    - name: Add remote user to group
-      remote_user: ubuntu
-      user:
-      name: "ubuntu"
-      group: "docker"
-      append: yes
-      tags:
-      - docker   
-    
     - name: Install docker-compose
       remote_user: ubuntu
       get_url: 
@@ -48,7 +39,7 @@
         src: dc_workpress.yml
         dest: /usr/local/bin/docker-compose
         owner: ubuntu
-        group: docker
+        group: root
         mode: 'u+x,g+x'
 
     - name: Start Docker-compose
