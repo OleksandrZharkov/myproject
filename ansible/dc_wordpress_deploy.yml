@@ -4,8 +4,10 @@
   become: yes
 
   tasks:
-    - name: Update OS Ubuntu Server 20.04
-      command: apt -y update    
+    - name: Update apt and
+      apt: update_cache=yes 
+    #- name: Update OS Ubuntu Server 20.04
+    #  command: apt -y update    
          
     - name: Install required system packages for Docker CE
       apt: name={{ item }} state=latest update_cache=yes
