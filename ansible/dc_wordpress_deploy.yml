@@ -1,0 +1,45 @@
+- name: Wordpress_deploy
+  gather_facts: false
+  hosts: [all]
+  become: yes
+
+  tasks:
+    - name: Update OS Ubuntu Server 20.04
+      command: apt -y update    
+         
+    - name: Install required system packages for Docker CE
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip ', 'python3-setuptools', 'virtualenv']
+    
+    - name: Install Docker py
+      command: pip3 install docker-py
+    
+    - name: Install Docker-compose
+      get_url:
+        url:  https://github.com/docker/compose/releases/download/1.26.0/docker-compose-{{ansible_system}}-{{ansible_userspace_architecture}}
+        dest: /usr/local/bin/docker-compose
+        mode: 'a+x'
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt: update_cache=yes name=docker-ce state=latest
+    
+    - name: Copy docker-compose.yml
+      ansible.builtin.copy:
+        src: dc_workpress.yml
+        dest: /wp/
+        owner: ubuntu
+        group: root
+        mode: u=rw,g=r,o=r
+
+    - name: Start Docker-compose
+      command: 'docker-compose up -d' 
