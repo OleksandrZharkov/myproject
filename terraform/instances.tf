@@ -1,6 +1,6 @@
 
 resource "aws_instance" "ubuntu-server" {
-  ami           = "ami-009b16df9fcaac611"
+  ami           = "ami-05f7491af5eef733a"
   instance_type = "t2.micro"
  
   subnet_id = aws_subnet.x3iibits-subnet-public-1.id
