@@ -5,11 +5,11 @@
 
   tasks:
     - name: Update OS Ubuntu Server 20.04
-      command: apt-get -y update    
+      command: apt -y update    
          
     - name: Install required system packages for Docker CE
       apt: name={{ item }} state=latest update_cache=yes
-      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip ', 'python3-setuptools', 'virtualenv']
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'python3-setuptools', 'virtualenv']
     
     - name: Install Docker py
       command: pip3 install docker-py
