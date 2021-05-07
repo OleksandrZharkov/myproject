@@ -43,3 +43,4 @@ jobs:
           playbookName: 'ansible/dc_wordpress_deploy.yml'  #choose your ansible playbook for iac
           inventoryFile: 'ansible/hosts'
           keyFile: 'ansible/key.pem'
+          
